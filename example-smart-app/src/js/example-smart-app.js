@@ -31,6 +31,11 @@
           var day = dob.getDate();
           var monthIndex = dob.getMonth() + 1;
           var year = dob.getFullYear();
+          var mrn = patient.identifier.map(id => {
+            if(id.type.text = "MRN") {
+              return id.value;
+            }
+          })
 
           var dobStr = monthIndex + '/' + day + '/' + year;
           var fname = '';
@@ -97,6 +102,7 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
+      mrn: {value: ''},
     };
   }
 
@@ -157,6 +163,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    document.querySelector('#mrn').innerHTML = p.mrn;
   };
 
 })(window);
