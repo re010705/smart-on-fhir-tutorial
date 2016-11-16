@@ -32,7 +32,7 @@
           var monthIndex = dob.getMonth() + 1;
           var year = dob.getFullYear();
           var mrn = patient.identifier.map(id => {
-            if(id.type.text = "MRN") {
+            if(id.type.text === "MRN") {
               return id.value;
             }
           })
