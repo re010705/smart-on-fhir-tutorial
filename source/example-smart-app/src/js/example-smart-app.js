@@ -31,6 +31,11 @@
           var day = dob.getDate();
           var monthIndex = dob.getMonth() + 1;
           var year = dob.getFullYear();
+          var mrn = patient.identifier.reduce(id => {
+            if(id.type.text === "MRN") {
+              return id.value;
+            }
+          })
 
           var dobStr = monthIndex + '/' + day + '/' + year;
           var fname = '';
@@ -53,6 +58,7 @@
           p.fname = fname;
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
+          p.mrn = mrn;
 
           if(typeof height[0] != 'undefined' && typeof height[0].valueQuantity.value != 'undefined' && typeof height[0].valueQuantity.unit != 'undefined') {
             p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
@@ -97,6 +103,7 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
+      mrn: {value: ''},
     };
   }
 
@@ -157,6 +164,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    document.querySelector('#mrn').innerHTML = p.mrn;
   };
 
 })(window);
